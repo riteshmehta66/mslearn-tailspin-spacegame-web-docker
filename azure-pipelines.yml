@@ -1,3 +1,6 @@
+# Below pipeline YAML file is from MSLEARN course Deploy applications with Azure DevOps at Docs-->Learn-->Deploy applications with Azure DevOps-->Automate Docker container deployments with Azure Pipelines 
+# URL to above MSLEARN course https://docs.microsoft.com/en-us/learn/modules/deploy-docker/4-deploy-docker
+
 trigger:
 - '*'
 
@@ -15,6 +18,7 @@ stages:
     pool:
       vmImage: 'ubuntu-18.04'
     steps:
+        # Docker2 task is documented at https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/docker
     - task: Docker@2
       displayName: 'Build and push the image to container registry'
       inputs:
@@ -37,6 +41,7 @@ stages:
     variables:
     - group: Release
     steps:
+        # AzureWebAppContainer@1 task is documented at https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/deploy/azure-rm-web-app-containers
     - task: AzureWebAppContainer@1
       inputs:
        appName: $(WebAppName)
